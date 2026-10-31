@@ -126,6 +126,94 @@
             line-height: 1.5;
         }
 
+        /* ================= MODAL DOWNLOAD DATA 2 GB (20 DETIK) ================= */
+        .download-data-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            backdrop-filter: blur(5px);
+        }
+
+        .download-data-card {
+            width: 100%;
+            max-width: 410px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.9), 0 0 20px var(--accent-glow);
+            animation: fadeIn 0.25s ease-out;
+        }
+
+        .dl-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .dl-title span { color: var(--accent-orange); }
+
+        .dl-desc {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-bottom: 18px;
+            line-height: 1.4;
+        }
+
+        .dl-stats-box {
+            background: #0a0b10;
+            border: 1px solid #232738;
+            border-radius: 8px;
+            padding: 14px;
+            margin-bottom: 14px;
+            text-align: left;
+            font-family: monospace;
+            font-size: 0.75rem;
+        }
+
+        .dl-stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .dl-stat-row:last-child { margin-bottom: 0; }
+        .dl-val-highlight { color: var(--accent-orange); font-weight: bold; }
+        .dl-val-green { color: var(--accent-green); font-weight: bold; }
+
+        .dl-progress-bg {
+            width: 100%;
+            height: 12px;
+            background: #11131c;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #2a2f44;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .dl-progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-orange), var(--accent-green));
+            transition: width 0.1s linear;
+        }
+
+        .dl-status-log {
+            font-size: 0.72rem;
+            color: var(--accent-green);
+            font-family: monospace;
+            min-height: 18px;
+        }
+
         /* ================= KARTU PANEL UTAMA ================= */
         .panel-container {
             display: none;
@@ -382,7 +470,7 @@
             cursor: pointer;
         }
 
-        /* ================= AREA AKTIVASI PANEL ================= */
+        /* Aktivasi Panel */
         .activation-box {
             padding: 14px 18px;
             background: #0f1016;
@@ -413,7 +501,6 @@
             box-shadow: none;
         }
 
-        /* Progress Bar */
         .progress-wrapper {
             display: none;
             margin-top: 12px;
@@ -520,7 +607,7 @@
             box-shadow: 0 4px 12px rgba(255, 85, 0, 0.3);
         }
 
-        /* ================= TOAST CONTAINER (10 NOTIFIKASI VIP) ================= */
+        /* ================= TOAST CONTAINER ================= */
         .toast-container {
             position: fixed;
             top: 20px;
@@ -549,7 +636,7 @@
             to { transform: translateX(0); opacity: 1; }
         }
 
-        /* ================= MODAL VERIFIKASI 10000X + 1 MENIT TIMER ================= */
+        /* ================= MODAL VERIFIKASI 1 KALI ================= */
         .verification-overlay {
             display: none;
             position: fixed;
@@ -583,7 +670,7 @@
         .v-sub {
             font-size: 0.74rem;
             color: var(--text-dim);
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .v-step-badge {
@@ -594,40 +681,23 @@
             font-size: 0.8rem;
             padding: 4px 12px;
             border-radius: 20px;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             border: 1px solid rgba(255, 85, 0, 0.3);
             font-family: monospace;
-        }
-
-        .v-progress-bg {
-            width: 100%;
-            height: 6px;
-            background: #0d0f17;
-            border-radius: 3px;
-            overflow: hidden;
-            margin-bottom: 14px;
-            border: 1px solid #232738;
-        }
-
-        .v-progress-fill {
-            width: 0.1%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-orange), var(--accent-green));
-            transition: width 0.1s linear;
         }
 
         .v-box {
             background: #0a0b10;
             border: 1px dashed #30354a;
             border-radius: 8px;
-            padding: 12px;
+            padding: 14px;
             margin-bottom: 12px;
         }
 
         .v-prompt {
-            font-size: 0.8rem;
+            font-size: 0.84rem;
             color: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .v-options {
@@ -637,13 +707,13 @@
         }
 
         .v-btn-opt {
-            padding: 9px;
+            padding: 10px;
             background: #171924;
             border: 1px solid #2d3247;
             border-radius: 6px;
             color: #fff;
             font-family: monospace;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             cursor: pointer;
             transition: all 0.1s;
         }
@@ -654,34 +724,6 @@
         }
 
         .v-btn-opt:active { transform: scale(0.96); }
-
-        .v-countdown-box {
-            display: none;
-            text-align: center;
-        }
-
-        .v-countdown-time {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: var(--accent-orange);
-            font-family: monospace;
-        }
-
-        .v-countdown-bar-bg {
-            width: 100%;
-            height: 6px;
-            background: #1c1f2e;
-            border-radius: 3px;
-            overflow: hidden;
-            margin-top: 10px;
-        }
-
-        .v-countdown-bar-fill {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-orange), var(--accent-green));
-            transition: width 1s linear;
-        }
     </style>
 </head>
 <body>
@@ -689,32 +731,54 @@
     <!-- TOAST NOTIFIKASI CONTAINER -->
     <div class="toast-container" id="toastContainer"></div>
 
-    <!-- MODAL VERIFIKASI 1000 KALI + TIMER 1 MENIT -->
+    <!-- MODAL DOWNLOAD DATA 2 GB (DURASI 20 DETIK) -->
+    <div class="download-data-overlay" id="downloadDataOverlay">
+        <div class="download-data-card">
+            <div class="dl-title">📦 MENGUNDUH DATA ASSET <span>[2.0 GB]</span></div>
+            <div class="dl-sub" style="font-size:0.75rem; color:var(--text-dim); margin-bottom: 14px;">
+                Sinkronisasi cache, database modul, dan resource game...
+            </div>
+
+            <div class="dl-stats-box">
+                <div class="dl-stat-row">
+                    <span>Ukuran Terunduh:</span>
+                    <span id="dlDownloadedSize" class="dl-val-highlight">0.00 MB / 2048 MB</span>
+                </div>
+                <div class="dl-stat-row">
+                    <span>Kecepatan Unduh:</span>
+                    <span id="dlSpeed" class="dl-val-green">~104.5 MB/s</span>
+                </div>
+                <div class="dl-stat-row">
+                    <span>Sisa Waktu:</span>
+                    <span id="dlRemainingTime" style="color: #fff;">20 Detik</span>
+                </div>
+                <div class="dl-stat-row">
+                    <span>Progress:</span>
+                    <span id="dlPercentText" class="dl-val-green">0%</span>
+                </div>
+            </div>
+
+            <div class="dl-progress-bg">
+                <div class="dl-progress-fill" id="dlProgressFill"></div>
+            </div>
+
+            <div class="dl-status-log" id="dlStatusLog">> Menghubungkan ke server CDN...</div>
+        </div>
+    </div>
+
+    <!-- MODAL VERIFIKASI 1 KALI -->
     <div class="verification-overlay" id="verificationModal">
         <div class="verification-modal">
             <div class="v-title">🛡️ VERIFIKASI ANTI-ROBOT</div>
-            <div class="v-sub">Selesaikan 10000 verifikasi untuk membuka modul fitur ini.</div>
+            <div class="v-sub">Selesaikan 1 kali verifikasi untuk menyalakan fitur ini.</div>
             
             <div id="vCaptchaArea">
-                <div class="v-step-badge" id="vStepIndicator">Langkah 1 / 10000</div>
-                <div class="v-progress-bg">
-                    <div class="v-progress-fill" id="vStepProgressFill"></div>
-                </div>
-
+                <div class="v-step-badge">Verifikasi Keamanan (1x)</div>
                 <div class="v-box">
                     <div class="v-prompt" id="vCaptchaPrompt">Pilih kode: <b style="color: #00ff80;">--</b></div>
                     <div class="v-options" id="vCaptchaOptions"></div>
                 </div>
-                <div id="vFeedback" style="font-size: 0.72rem; min-height: 16px; font-weight: bold;"></div>
-            </div>
-
-            <!-- COUNTDOWN 1 MENIT (60 DETIK) -->
-            <div class="v-countdown-box" id="vCountdownArea">
-                <div style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 6px;">Menunggu Sinkronisasi Sistem (1 Menit)...</div>
-                <div class="v-countdown-time" id="vCountdownTimer">60s</div>
-                <div class="v-countdown-bar-bg">
-                    <div class="v-countdown-bar-fill" id="vCountdownProgress"></div>
-                </div>
+                <div id="vFeedback" style="font-size: 0.75rem; min-height: 18px; font-weight: bold;"></div>
             </div>
         </div>
     </div>
@@ -748,7 +812,7 @@
 
     <div class="demo-key-hint">
         • Kunci Trial: <b style="color: #ffaa00; font-family: monospace;">PHOENIX-TRIAL-1D</b><br>
-        • beli Kunci VIP Di: <b style="color: #00ff80; font-family: monospace;">rsaragang discord</b>
+        • Kunci VIP: <b style="color: #00ff80; font-family: monospace;">PHOENIX-VIP-PRO4</b>
     </div>
 </div>
 
@@ -789,7 +853,7 @@
             </label>
         </div>
 
-        <!-- FITUR VIP LAMA -->
+        <!-- FITUR VIP -->
         <div class="toggle-row" id="row-headshot100">
             <div class="toggle-desc">
                 <span class="toggle-name">Auto Headshot <span class="tag-vip">VIP</span></span>
@@ -834,7 +898,6 @@
             </label>
         </div>
 
-        <!-- FITUR VIP TAMBAHAN BARU SESUAI PERMINTAAN -->
         <div class="toggle-row" id="row-glowall">
             <div class="toggle-desc">
                 <span class="toggle-name">GLOWALL BANTING <span class="tag-vip">VIP</span></span>
@@ -869,7 +932,7 @@
         </div>
     </div>
 
-    <!-- Tab 2: ESP & Visual (UTUH) -->
+    <!-- Tab 2: ESP & Visual -->
     <div id="tab-esp" class="panel-content" style="display: none;">
         <div class="section-title">Pratinjau Grafis ESP Mockup</div>
 
@@ -901,7 +964,7 @@
         </div>
     </div>
 
-    <!-- Tab 3: Sensitivitas (UTUH) -->
+    <!-- Tab 3: Sensitivitas -->
     <div id="tab-sens" class="panel-content" style="display: none;">
         <div class="section-title">Preset MOD</div>
         <div class="control-group">
@@ -914,7 +977,7 @@
         </div>
     </div>
 
-    <!-- Bagian Tombol Aktifkan Panel & Progress Bar (UTUH) -->
+    <!-- Bagian Tombol Aktifkan Panel & Progress Bar -->
     <div class="activation-box">
         <button id="btnActivatePanel" class="btn-activate" onclick="startActivationProcess()">⚡ AKTIFKAN PANEL SEKARANG</button>
         
@@ -934,15 +997,11 @@
 </div>
 
 <script>
-    // DEFINISI KUNCI AKSES
     const KEY_TRIAL = "PHOENIX-TRIAL-1D";
     const KEY_VIP   = "PHOENIX-VIP-PRO4";
 
     let currentRole = "guest";
 
-    // PENGATURAN VERIFIKASI 10000 KALI
-    const CAPTCHA_MAX_STEPS = 10000;
-    let vStep = 1;
     let vCorrectAnswer = null;
     let pendingToggleElement = null;
     let pendingFeatureTitle = "";
@@ -981,10 +1040,11 @@
         list.forEach((msg, idx) => {
             setTimeout(() => {
                 showToast(msg);
-            }, (idx + 1) * 450);
+            }, (idx + 1) * 350);
         });
     }
 
+    /* ================= LOGIN & DOWNLOAD DATA 2 GB (20 DETIK) ================= */
     function verifyKey() {
         const input = document.getElementById('inputKey').value.trim().toUpperCase();
         const statusEl = document.getElementById('loginStatus');
@@ -992,18 +1052,84 @@
         if (input === KEY_TRIAL) {
             currentRole = "trial";
             statusEl.className = "login-status status-success";
-            statusEl.innerText = "✓ Lisensi Trial 5 Hari Aktif!";
-            openPanel();
+            statusEl.innerText = "✓ Lisensi Trial Cocok! Mempersiapkan unduhan data...";
+            startDataDownload();
         } else if (input === KEY_VIP) {
             currentRole = "vip";
             statusEl.className = "login-status status-success";
-            statusEl.innerText = "✓ Lisensi VIP Permanen Aktif!";
-            trigger10VipNotifications();
-            document.getElementById('vpnDownloadOverlay').style.display = 'flex';
+            statusEl.innerText = "✓ Lisensi VIP Cocok! Mempersiapkan unduhan data...";
+            startDataDownload();
         } else {
             statusEl.className = "login-status status-error";
-            statusEl.innerText = "✗ Kunci tidak valid!";
+            statusEl.innerText = "✗ Kunci lisensi tidak valid!";
         }
+    }
+
+    function startDataDownload() {
+        const overlay = document.getElementById('downloadDataOverlay');
+        const fill = document.getElementById('dlProgressFill');
+        const downloadedText = document.getElementById('dlDownloadedSize');
+        const speedText = document.getElementById('dlSpeed');
+        const remTimeText = document.getElementById('dlRemainingTime');
+        const percentText = document.getElementById('dlPercentText');
+        const logText = document.getElementById('dlStatusLog');
+
+        overlay.style.display = 'flex';
+
+        const TOTAL_DURATION_SEC = 20; // 20 Detik pas
+        const TOTAL_SIZE_MB = 2048;    // 2 GB = 2048 MB
+        let elapsedMs = 0;
+        const intervalMs = 100; // Update halus tiap 0.1 detik
+
+        const dlInterval = setInterval(() => {
+            elapsedMs += intervalMs;
+            const progressRatio = Math.min(elapsedMs / (TOTAL_DURATION_SEC * 1000), 1);
+            const currentMB = (progressRatio * TOTAL_SIZE_MB).toFixed(1);
+            const currentPercent = Math.floor(progressRatio * 100);
+            const remainingSec = Math.max(0, Math.ceil(TOTAL_DURATION_SEC - (elapsedMs / 1000)));
+
+            fill.style.width = (progressRatio * 100) + "%";
+            percentText.innerText = currentPercent + "%";
+            downloadedText.innerText = `${currentMB} MB / 2048 MB (2.0 GB)`;
+            remTimeText.innerText = `${remainingSec} Detik`;
+
+            // Variasi kecepatan download dinamis agar tampak nyata
+            const randomSpeed = (98 + Math.random() * 12).toFixed(1);
+            speedText.innerText = `~${randomSpeed} MB/s`;
+
+            // Log tahapan download
+            if (currentPercent < 25) {
+                logText.innerText = "> [1/4] Mengunduh berkas base game data (2.0 GB)...";
+            } else if (currentPercent < 55) {
+                logText.innerText = "> [2/4] Mengekstrak paket OBB dan cache texture asset...";
+            } else if (currentPercent < 85) {
+                logText.innerText = "> [3/4] Memverifikasi integritas checksum SHA-256...";
+            } else {
+                logText.innerText = "> [4/4] Memasang patch modifikasi sistem...";
+            }
+
+            // Selesai tepat 20 detik
+            if (elapsedMs >= TOTAL_DURATION_SEC * 1000) {
+                clearInterval(dlInterval);
+                fill.style.width = "100%";
+                percentText.innerText = "100%";
+                downloadedText.innerText = "2048 MB / 2048 MB (2.0 GB)";
+                remTimeText.innerText = "0 Detik";
+                logText.innerText = "✓ PENGUNDUHAN DATA 2 GB SELESAI!";
+                logText.style.color = "var(--accent-green)";
+
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+
+                    if (currentRole === "vip") {
+                        trigger10VipNotifications();
+                        document.getElementById('vpnDownloadOverlay').style.display = 'flex';
+                    } else {
+                        openPanel();
+                    }
+                }, 700);
+            }
+        }, intervalMs);
     }
 
     function continueVipLogin(event) {
@@ -1018,21 +1144,19 @@
             document.getElementById('mainPanel').style.display = 'block';
             applyPermissions();
             renderMockupESP();
-        }, 600);
+        }, 300);
     }
 
     function applyPermissions() {
         const badge = document.getElementById('badgeStatus');
         const isTrial = currentRole === "trial";
 
-        // Kontrol VIP Lengkap (Bawaan + Tambahan Baru)
         const vipControls = [
             { id: 'chk-headshot10',   row: 'row-headshot100' },
             { id: 'chk-aimlock360',   row: 'row-aimlock360' },
             { id: 'chk-nembak-angin', row: 'row-nembak-angin' },
             { id: 'chk-espbox',       row: 'row-espbox' },
             { id: 'chk-espline',      row: 'row-espline' },
-            // Fitur baru
             { id: 'chk-glowall',      row: 'row-glowall' },
             { id: 'chk-angin-body',   row: 'row-angin-body' },
             { id: 'chk-spin',         row: 'row-spin' }
@@ -1071,7 +1195,7 @@
         }
     }
 
-    /* ================= ALUR VERIFIKASI 10000 KALI & TIMER 1 MENIT ================= */
+    /* ================= ALUR VERIFIKASI ANTI-ROBOT 1 KALI SAJA ================= */
     function interceptToggle(name, checkbox) {
         if (!checkbox.checked) {
             logStatus(name, false);
@@ -1079,30 +1203,24 @@
             return;
         }
 
-        // Tahan status switch agar tidak langsung aktif
+        // Tahan switch sementara
         checkbox.checked = false;
         pendingToggleElement = checkbox;
         pendingFeatureTitle = name;
 
-        // Buka modal verifikasi 10000 kali
-        vStep = 1;
-        document.getElementById('vCaptchaArea').style.display = 'block';
-        document.getElementById('vCountdownArea').style.display = 'none';
+        // Tampilkan modal verifikasi 1 kali
         document.getElementById('verificationModal').style.display = 'flex';
-        generateCaptchaStep();
+        generateSingleCaptcha();
     }
 
-    function generateCaptchaStep() {
-        document.getElementById('vStepIndicator').innerText = `Langkah ${vStep} / ${CAPTCHA_MAX_STEPS}`;
-        const pct = ((vStep / CAPTCHA_MAX_STEPS) * 100).toFixed(1);
-        document.getElementById('vStepProgressFill').style.width = `${pct}%`;
+    function generateSingleCaptcha() {
         document.getElementById('vFeedback').innerText = "";
 
         const code = Math.floor(Math.random() * 89) + 10;
         vCorrectAnswer = code;
 
         document.getElementById('vCaptchaPrompt').innerHTML = 
-            `Pilih tombol kode: <b style="color: #00ff80; font-size: 1.1rem;">${code}</b>`;
+            `Pilih tombol kode: <b style="color: #00ff80; font-size: 1.15rem;">${code}</b>`;
 
         const options = [code];
         while (options.length < 4) {
@@ -1125,53 +1243,27 @@
     function checkCaptchaAnswer(selected) {
         const fb = document.getElementById('vFeedback');
         if (selected === vCorrectAnswer) {
-            if (vStep < CAPTCHA_MAX_STEPS) {
-                vStep++;
-                generateCaptchaStep();
-            } else {
-                // 10000 Langkah Tuntas -> Masuk ke Timer 1 Menit
-                document.getElementById('vStepProgressFill').style.width = "100%";
-                fb.style.color = "var(--accent-green)";
-                fb.innerText = "✓ 10000 Verifikasi Berhasil! Memulai timer 1 menit...";
-                setTimeout(() => {
-                    document.getElementById('vCaptchaArea').style.display = 'none';
-                    document.getElementById('vCountdownArea').style.display = 'block';
-                    start1MinuteWait();
-                }, 400);
-            }
-        } else {
-            fb.style.color = "#ff3344";
-            fb.innerText = "✗ Salah! Verifikasi direset ke langkah 1.";
-            vStep = 1;
-            setTimeout(generateCaptchaStep, 500);
-        }
-    }
+            // Verifikasi 1 Kali Sukses -> Langsung aktifkan
+            fb.style.color = "var(--accent-green)";
+            fb.innerText = "✓ Verifikasi Berhasil! Mengaktifkan modul...";
 
-    function start1MinuteWait() {
-        let timeLeft = 60;
-        const timerEl = document.getElementById('vCountdownTimer');
-        const progressEl = document.getElementById('vCountdownProgress');
-
-        const interval = setInterval(() => {
-            timeLeft--;
-            timerEl.innerText = `${timeLeft}s`;
-            progressEl.style.width = Math.floor(((60 - timeLeft) / 60) * 100) + "%";
-
-            if (timeLeft <= 0) {
-                clearInterval(interval);
+            setTimeout(() => {
                 document.getElementById('verificationModal').style.display = 'none';
-                
                 if (pendingToggleElement) {
                     pendingToggleElement.checked = true;
                     logStatus(pendingFeatureTitle, true);
                     showToast(`✓ Modul [${pendingFeatureTitle}] Berhasil Terpasang!`);
                     renderMockupESP();
                 }
-            }
-        }, 10000);
+            }, 600);
+        } else {
+            fb.style.color = "#ff3344";
+            fb.innerText = "✗ Pilihan salah! Coba lagi.";
+            setTimeout(generateSingleCaptcha, 450);
+        }
     }
 
-    /* ================= LOGIKA PROSES AKTIVASI (BAWAAN) ================= */
+    /* ================= LOGIKA PROSES AKTIVASI ================= */
     function startActivationProcess() {
         const btn = document.getElementById('btnActivatePanel');
         const progressWrapper = document.getElementById('progressWrapper');
@@ -1184,32 +1276,24 @@
         btn.innerText = "⏳ SEDANG MEMPROSES KALIBRASI...";
         progressWrapper.style.display = "block";
 
-        const TOTAL_DURATION_SEC = 70;
+        const TOTAL_DURATION_SEC = 20;
         let elapsed = 0;
-
-        const logStages = [
-            { sec: 0,  msg: "Inisialisasi modul driver grafis...", log: "> [PROSES]: Memulai sinkronisasi lingkungan runtime..." },
-            { sec: 10, msg: "Menganalisis offset frame rate...", log: "> [PROSES]: Memindai buffer resolusi layar..." },
-            { sec: 22, msg: "Menghubungkan kalibrasi sentuhan...", log: "> [PROSES]: Bypass kalkulasi deselerasi sentuh..." },
-            { sec: 35, msg: "Menyelaraskan sensitivitas reticle...", log: "> [PROSES]: Stabilisasi titik sumbu X/Y visual..." },
-            { sec: 48, msg: "Memverifikasi handshake modul...", log: "> [PROSES]: Validasi sertifikat mock handshake (OK)..." },
-            { sec: 60, msg: "Mengunci parameter konfigurasi...", log: "> [PROSES]: Menyelesaikan optimasi cache lokal..." },
-            { sec: 68, msg: "Finalisasi instalasi profil...", log: "> [PROSES]: Menyiapkan konfirmasi akhir..." }
-        ];
 
         const timer = setInterval(() => {
             elapsed++;
-
             const percent = Math.min(Math.floor((elapsed / TOTAL_DURATION_SEC) * 100), 100);
             progressFill.style.width = percent + "%";
             progressPercent.innerText = percent + "%";
 
-            for (let i = logStages.length - 1; i >= 0; i--) {
-                if (elapsed >= logStages[i].sec) {
-                    stepText.innerText = logStages[i].msg;
-                    logText.innerText = logStages[i].log;
-                    break;
-                }
+            if (percent < 30) {
+                stepText.innerText = "Menginisialisasi modul grafis...";
+                logText.innerText = "> [PROSES]: Bypass offset buffer sentuh...";
+            } else if (percent < 70) {
+                stepText.innerText = "Menyelaraskan kalibrasi bidikan...";
+                logText.innerText = "> [PROSES]: Stabilisasi sumbu X/Y visual...";
+            } else {
+                stepText.innerText = "Mengunci parameter konfigurasi...";
+                logText.innerText = "> [PROSES]: Menyelesaikan optimasi cache...";
             }
 
             if (elapsed >= TOTAL_DURATION_SEC) {
@@ -1223,7 +1307,7 @@
                 btn.style.background = "linear-gradient(135deg, #008037, #005a26)";
                 logText.innerText = "> [SUKSES]: Konfigurasi berhasil dipasang. Panel aktif!";
             }
-        }, 10000);
+        }, 1000);
     }
 
     document.getElementById('inputKey').addEventListener('keypress', function(e) {
